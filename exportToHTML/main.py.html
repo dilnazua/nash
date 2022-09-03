@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">os</span>
+<span class="s0">from </span><span class="s1">flask </span><span class="s0">import </span><span class="s1">Flask</span><span class="s0">, </span><span class="s1">render_template</span><span class="s0">, </span><span class="s1">request</span><span class="s0">, </span><span class="s1">make_response</span><span class="s0">, </span><span class="s1">jsonify</span><span class="s0">, </span><span class="s1">url_for</span>
+<span class="s0">from </span><span class="s1">flask_login </span><span class="s0">import </span><span class="s1">LoginManager</span><span class="s0">, </span><span class="s1">login_user</span><span class="s0">, </span><span class="s1">current_user</span><span class="s0">, </span><span class="s1">login_required</span><span class="s0">, </span><span class="s1">logout_user</span><span class="s0">, </span><span class="s1">UserMixin</span>
+<span class="s0">from </span><span class="s1">werkzeug.utils </span><span class="s0">import </span><span class="s1">redirect</span>
+<span class="s0">from </span><span class="s1">flask </span><span class="s0">import </span><span class="s1">make_response</span>
+<span class="s0">from </span><span class="s1">flask </span><span class="s0">import </span><span class="s1">Flask</span><span class="s0">, </span><span class="s1">render_template</span>
+
+<span class="s1">app = Flask(__name__)</span>
+<span class="s1">app.config[</span><span class="s2">'SECRET_KEY'</span><span class="s1">] = </span><span class="s2">'yandexlyceum_secret_key'</span>
+
+
+<span class="s1">@app.route(</span><span class="s2">&quot;/&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">index():</span>
+    <span class="s0">return </span><span class="s1">render_template(</span><span class="s2">'main.html'</span><span class="s1">)</span>
+
+
+<span class="s1">@app.route(</span><span class="s2">&quot;/about&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">index():</span>
+    <span class="s0">return </span><span class="s1">render_template(</span><span class="s2">'main.html'</span><span class="s1">)</span>
+
+
+<span class="s1">@app.route(</span><span class="s2">&quot;/admin&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">index():</span>
+    <span class="s0">return </span><span class="s1">render_template(</span><span class="s2">'admin.html'</span><span class="s1">)</span>
+
+<span class="s1">@app.route(</span><span class="s2">&quot;/admin_add&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">index():</span>
+    <span class="s0">return </span><span class="s1">render_template(</span><span class="s2">'admin.html'</span><span class="s1">)</span>
+
+
+<span class="s2">&quot;&quot;&quot;&quot;@app.route('/items/&lt;int:id&gt;', methods=['GET', 'POST']) 
+def show_item(id): 
+    return render_template('view_item.html', title='About a product', item=item)&quot;&quot;&quot;</span>
+
+
+<span class="s1">@app.errorhandler(</span><span class="s3">404</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">not_found(error):</span>
+    <span class="s0">return </span><span class="s1">make_response(jsonify({</span><span class="s2">'error'</span><span class="s1">: </span><span class="s2">'Permission denied'</span><span class="s1">})</span><span class="s0">, </span><span class="s3">404</span><span class="s1">)</span>
+
+
+<span class="s1">@app.after_request</span>
+<span class="s0">def </span><span class="s1">add_header(response):</span>
+    <span class="s1">response.cache_control.max_age = </span><span class="s3">0</span>
+    <span class="s0">return </span><span class="s1">response</span>
+
+
+<span class="s0">def </span><span class="s1">main():</span>
+    <span class="s1">app.run()</span>
+
+
+<span class="s0">if </span><span class="s1">__name__ == </span><span class="s2">'__main__'</span><span class="s1">:</span>
+    <span class="s1">app.run(port=</span><span class="s3">8080</span><span class="s0">, </span><span class="s1">host=</span><span class="s2">'127.0.0.2'</span><span class="s1">)</span>
+</pre>
+</body>
+</html>
