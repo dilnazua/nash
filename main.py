@@ -24,7 +24,18 @@ def admin():
 
 @app.route("/admin_add")
 def adminka():
-    return render_template('admin.html')
+    return render_template('add.html')
+
+@app.route("/admin_add_ads")
+def ads():
+    return render_template('addvertisement.html')
+@app.route("/admin_delete")
+def delete():
+    return render_template('delete.html')
+
+@app.route("/linktab")
+def linktab():
+    return render_template('linktab.html')
 
 
 """"@app.route('/items/<int:id>', methods=['GET', 'POST'])
@@ -48,4 +59,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run(port=5000, host='0.0.0.0')
+    app.run(port=3000, host='0.0.0.0')
