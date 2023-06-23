@@ -5,7 +5,7 @@ from flask import make_response
 from flask import Flask, render_template
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config['SECRET_KEY'] = 'secret_key'
 
 
 @app.route("/")
